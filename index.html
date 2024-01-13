@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+<body>
+    <style>
+        /* style sheet */
+        * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    @font-face {
+        font-family: 'Digital-7';
+        src: url('./digital-7/digital-7\ \(mono\ italic\).ttf');
+    }
+    body {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #181818;
+    }
+    .box {
+        width: 290px;
+        height: 290px;
+        box-shadow: 16px 14px 20px #0000008c;
+        border-radius: 50%;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box::before{
+        content: "";
+        background-image: conic-gradient(
+            #ff0052 20deg,
+            transparent 120deg
+        );
+        width: 150%;
+        height: 150%;
+        position: absolute;
+        animation: rotate 2s linear infinite;
+    }
+    .box::after{
+        content: "";
+        width: 280px;
+        height: 280px;
+        background: #101010;
+        position: absolute;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ff0052;
+        font-size: larger;
+        letter-spacing: 5px;
+        box-shadow: inset 20px 20px 20px #0000008c;
+    }
+    @keyframes rotate {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(-360deg);
+        }
+    }
+    h1{
+        color: #ff0052;
+        font-size: 50px;
+        z-index: 155;
+        position: absolute;
+        font-family: 'Digital-7';
+    }
+    button{
+        z-index: 2;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: #ff0052;
+        background-color: #101010;
+        cursor: pointer;
+    }
+    #sub{
+        position: absolute;
+        right: 25px;
+        bottom: 80px;
+        font-size: 30px;
+    }
+    #add{
+        position: absolute;
+        left: 25px;
+        bottom: 70px;
+        font-size: 30px;
+    }
+    #reset{
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        top: 25px;
+        font-size: 10px;
+        font-weight: bold;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+    </style>
+    <!-- ///html Sheet -->
+    <div class="container">
+        <div class="box">
+        <h1 id="num">0</h1>
+        <button id="add">+</button>
+        <button id="sub">-</button>
+        <button id="reset">RESET</button>
+        </div>
+    </div>
+    <script>
+        //script Sheet
+        let num =0;
+        let number =document.getElementById('num')
+        let plus = document.getElementById('add')
+        let mines = document.getElementById('sub')
+        let reset = document.getElementById('reset')
+
+        plus.onclick  = ()=>{
+            num++
+            number.innerHTML=num
+        }
+        mines.onclick =()=>{
+            num--
+            number.innerHTML=num
+        }
+        reset.onclick=()=>{
+            num =0
+            number.innerHTML =num
+        }
+    </script>
+</body>
+</html>
